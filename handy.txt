@@ -1,0 +1,78 @@
+User
+	1. 	Create user
+		http://localhost:8080/api/users/
+		Req - 
+				{
+				    "name":"Ajit Kumar",
+				    "email":"ajit@gmail.com",
+				    "password":"test@123",
+				    "about":"I'm a programmer"
+				}
+
+	
+	2. Update user
+		http://localhost:8080/api/users/updateUser/12
+		Req - 
+				{
+				    "name":"John",
+				    "email":"john@gmail.com",
+				    "password":"12345",
+				    "about":"I am a Business man"
+				}
+				
+	3. Get UserBy Id
+		http://localhost:8080/api/users/getUserById/45456
+	4. Get All user
+		http://localhost:8080/api/users/getAllUsers
+	5. Delete User
+		http://localhost:8080/api/users/deleteUser/8
+		
+		
+		
+		
+ Category
+ 	1. Add category
+ 		http://localhost:8080/api/categories/
+ 		Req - 
+		 		{
+				    "categoryTitle": "Scripting Language",
+				    "categoryDescription":"This category contains topics related to scripting languages."
+				}
+				
+	2. Update category
+		http://localhost:8080/api/categories/3
+		Req - 
+				{
+				    "categoryTitle": "Politics",
+				    "categoryDescription":"This category contains topics related to current politics."
+				}
+				
+	3. Get category by id
+		http://localhost:8080/api/categories/2
+	4. Get all category
+		http://localhost:8080/api/categories/
+	5. Delete category
+		http://localhost:8080/api/categories/5
+		
+		
+		
+
+Post
+    1. Create post
+		http://localhost:8080/api/user/4/category/1/posts
+		Req - 
+				{
+				    "title":"what is programming language ?",
+				    "content":"Programming language is used to communicate with machine."
+				} 
+				
+	2. Get post by user
+		http://localhost:8080/api/user/4/posts
+	3. Get post by category
+		http://localhost:8080/api/category/1/posts
+	4. get single post
+		http://localhost:8080/api/post/11
+	5. Get all post
+		http://localhost:8080/api/posts/
+	6. Delete post
+		http://localhost:8080/api/post/11
