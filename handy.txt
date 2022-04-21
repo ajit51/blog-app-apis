@@ -76,3 +76,13 @@ Post
 		http://localhost:8080/api/posts/
 	6. Delete post
 		http://localhost:8080/api/post/11
+	7. update post
+		http://localhost:8080/api/posts/9
+		Req - 
+				{
+				    "title":"what is scripting language ?",
+				    "content":"A scripting language is a programming language that is interpreted. It is translated into machine code when the code is run"
+				}
+				
+	8. Get all post with pagination
+		http://localhost:8080/api/posts?pageNumber=0&pageSize=3
