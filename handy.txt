@@ -86,3 +86,4 @@ Post
 				
 	8. Get all post with pagination
 		http://localhost:8080/api/posts?pageNumber=0&pageSize=3
+		http://localhost:8080/api/posts?pageNumber=1&pageSize=3&sortBy=postId&sortDir=desc
