@@ -91,3 +91,9 @@ Post
 		
 	9. Search by title
 		http://localhost:8080/api/posts/search/what is politics?
+		
+	10. Upload Image
+		POST - http://localhost:8080/api/post/image/upload/9
+		
+	11. Download Image
+		GET - http://localhost:8080/api/post/image/7da4f0cb-2471-4373-b2b2-656480cc97ae.jpeg
