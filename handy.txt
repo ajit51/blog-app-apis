@@ -97,3 +97,27 @@ Post
 		
 	11. Download Image
 		GET - http://localhost:8080/api/post/image/7da4f0cb-2471-4373-b2b2-656480cc97ae.jpeg
+		
+		
+	Comments
+	1. POST - http://localhost:8080/api/post/6/comments
+		Req - 
+				{
+				    "content":"This is third comment of post 6"
+				}
+				
+		Res - 
+				{
+				    "id": 1,
+				    "content": "This is third comment of post 6"
+				}
+				
+				
+	JWT Token
+	POST - http://localhost:8080/api/v1/auth/login
+		Req - 
+				{
+				    "username":"john@gmail.com",
+				    "password":"12345"
+				}
+				
