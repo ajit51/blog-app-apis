@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blog.exceptions.ApiException;
 import com.blog.payloads.JwtAuthRequest;
 import com.blog.payloads.JwtAuthResponse;
 import com.blog.security.CustomUserDetailService;
@@ -32,7 +34,7 @@ public class AuthController {
 	private AuthenticationManager authenticationManager;
 
 	@PostMapping("/login")
-	public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest jwtAuthRequest) {
+	public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest jwtAuthRequest) throws Exception {
 		this.authenticate(jwtAuthRequest.getUsername(), jwtAuthRequest.getPassword());
 
 		UserDetails userDetails = customUserDetailService.loadUserByUsername(jwtAuthRequest.getUsername());
@@ -42,10 +44,15 @@ public class AuthController {
 		return new ResponseEntity<JwtAuthResponse>(jwtAuthResponse, HttpStatus.OK);
 	}
 
-	private void authenticate(String username, String password) {
+	private void authenticate(String username, String password) throws Exception {
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,
 				password);
-		this.authenticationManager.authenticate(authenticationToken);
+		try {
+			this.authenticationManager.authenticate(authenticationToken);
+		}catch (BadCredentialsException e) {
+			System.out.println("Invalid Details !!");
+			throw new ApiException("Invalid username and password !!");
+		}
 
 	}
 
